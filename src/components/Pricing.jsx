@@ -58,7 +58,7 @@ const Pricing = () => {
 
             <div className="pricing_bottom">
                 {plans.map(plan => (
-                    <article className="plan">
+                    <article key={plan.id} className="plan">
                         <div className="plan_details">
                             <div className="price">
                                 <span className="currency">$</span>
@@ -70,7 +70,7 @@ const Pricing = () => {
 
                             <ul>
                                 { plan.pros.map(pro => (
-                                    <li>{ pro }</li>
+                                    <li key={pro}>{ pro }</li>
                                 )) }
                             </ul>
                         </div>

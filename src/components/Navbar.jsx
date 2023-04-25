@@ -1,6 +1,11 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
+    const [show, setShow] = useState(false);
+
     const toggleNavbar = () =>{
-        document.querySelector(".links").classList.toggle("show");
+        setShow(!show);
     }
 
     return ( 
@@ -11,7 +16,8 @@ const Navbar = () => {
                 </a>
 
                 <div className="links-navigation">
-                    <ul role="list" className="links">
+                    <ul role="list" className={`links ${show ? "show" : "" }`}>
+                        <span onClick={toggleNavbar}>Close</span>
                         <li><a href="#aboutus">About Us</a></li>
                         <li><a href="#howitworks">How it works</a></li>
                         <li><a href="#pricing">Pricing</a></li>
@@ -26,8 +32,13 @@ const Navbar = () => {
             </button>
 
             <div className="nav-buttons">
-                <button className="login">Login</button>
-                <button className="signup">Sign Up</button>
+                <Link to="/login">
+                    <button className="login">Login</button>
+                </Link>
+                
+                <Link to="/signup">
+                    <button className="signup">Sign Up</button>
+                </Link>
             </div>
         </nav>
      );

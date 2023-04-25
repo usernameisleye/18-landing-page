@@ -1,22 +1,45 @@
+import { BrowserRouter, Routes, Route } from"react-router-dom";
+
 // Components import
-import Hero from "./components/Hero"
-import Navbar from "./components/Navbar"
-import AboutUs from "./components/AboutUs"
-import HowItWorks from "./components/HowItWorks"
-import Pricing from "./components/Pricing"
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Page404 from "./pages/Page404";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
 
   return (
-    <div className="App">
-      <Navbar />
-      <main>
-        <Hero />
-        <AboutUs />
-        <HowItWorks />
-        <Pricing />
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          {/* Home Route */}
+          <Route
+            path="/"
+            element={<Home />}
+           />
+
+          {/* Login Route */}
+          <Route 
+            path="/login"
+            element={<Login />}
+          />
+
+          {/* Signup Route */}
+          <Route 
+            path="/signup"
+            element={<Signup />}
+          />
+
+          {/* 404 Route */}
+          <Route 
+            path="*"
+            element={<Page404 />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
