@@ -1,0 +1,57 @@
+@mixin header{
+    text-transform: uppercase;
+    font-weight: $fw-ultrabold;
+    padding: $size-200 $size-400;
+    border: 1px solid $base-black;
+    width: fit-content;
+}
+
+@mixin h2{
+    font-size: $fs-600;
+    font-weight: $fw-ultrabold;
+    margin-block: $size-400;
+}
+
+@mixin show{
+    transform: translateX(0);
+}
+
+@mixin flex-ac-sb($gap){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap;
+}
+
+@mixin flex-as-sb($gap){
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $gap;
+}
+
+@mixin flex-ac($gap){
+    display: flex;
+    align-items: center;
+    gap: $gap;
+}
+
+@mixin flex-ac-col($gap){
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin flex-col($gap){
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin flex-col-sb($gap){
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $gap;
+}

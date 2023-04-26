@@ -1,14 +1,26 @@
+// Utility classes
+.visually-hidden:not(:focus):not(:active){
+    border: 0;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    clip: rect(0, 0, 0, 0);
+}
+
+// HOME
+
+// Navbar
 .navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-ac-sb(0);
     padding: $size-600;
     font-size: $fs-400;
 
     .nav-links{
-        display: flex;
-        align-items: center;
-        gap: $size-700;
+        @include flex-ac($size-700);
         .links{
             display: flex;
             gap: $size-700;
@@ -30,8 +42,7 @@
     }
 
     .nav-buttons{
-        display: flex;
-        align-items: center;
+        @include flex-ac(0);
         gap: $size-700;
         .login{
             background: none;
@@ -40,7 +51,7 @@
         }
         .signup{
             @extend .login;
-            background-color: $base-black;
+            background: $base-black;
             color: $base-white;
             padding: $size-300 $size-300 * 3;
             border: 2px solid $base-black;
@@ -80,15 +91,39 @@
                     top: 0%;
                     right: -90%;
                     display: block;
+                    width: fit-content
+                    
                 }
             }
+
             .show{
-                transform: translateX(0%);
+                @include show;
             }
         }
         .nav-buttons{
-            display: none;
+            position: absolute;
+            bottom: 5%;
+            color: $base-white;
+
+            transform: translateX(-110%);
+            transition: .25s ease-in-out;
+            .signup{
+                padding: 0;
+                &:hover{
+                    color: $base-white;
+                }
+            }
+            .login{
+                color: $base-white;
+                background: none;
+                border: 0;
+            }
+
         }
+        .show{
+            @include show;
+        }
+
         .navbar-toggle{
             display: block;
         }
@@ -100,9 +135,7 @@ main{
     width: 100%;
 }
 header{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    @include flex-ac-col(0);
     padding-inline: $size-400;
 
     .hero-left{
@@ -113,7 +146,7 @@ header{
         .email{
             display: flex;
             width: fit-content;
-            height: $size-600 * 1.2;
+            height: $size-700;
             border: 2px solid $base-black;
             margin-block: $size-600;
 
@@ -133,8 +166,13 @@ header{
                 padding-inline: $size-300;
                 background: $base-black;
                 color: $base-white;
-                border: 0;
+                border: none;
                 border-left: 2px solid $base-black;
+
+                &:is(:hover, :focus-within){
+                    background: $base-white;
+                    color: $base-black;
+                }
             }
         }
         .sponsors{
@@ -148,6 +186,23 @@ header{
         width: 70%;
     }
 }
+
+@media (min-width: 36em){
+    header{
+        .hero-left{
+            .email{
+                height: $size-700 * 1.2;
+                input{
+                    padding-inline: $size-500;
+                }
+                button{
+                    padding-inline: $size-700;
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: 55em){
     main{
         width: 80%;
@@ -155,9 +210,7 @@ header{
     }
     header{
         flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: $size-700;
+        @include flex-ac-sb($size-700);
         margin-block: $size-800;
         .hero-left{
             width: 40%;
@@ -178,10 +231,6 @@ header{
                 }
                 button{
                     padding-inline: $size-500 * 1.5;
-                    &:hover{
-                        background: $base-white;
-                        color: $base-black;
-                    }
                 }
             }
         }
@@ -193,9 +242,7 @@ header{
 
 // About Us
 .about-us{
-    display: flex;
-    gap: $size-900;
-    align-items: center;
+    @include flex-ac($size-900);
     flex-direction: column-reverse;
     padding-inline: $size-400;
     margin-block: $size-900 * 1.5;
@@ -242,10 +289,7 @@ header{
 
 // How it works
 .how-it-works{
-    display: flex;
-    gap: $size-800;
-    align-items: center;
-    flex-direction: column;
+    @include flex-ac-col($size-800);
     padding-inline: $size-400;
     margin-block: $size-900 * 1.5;
     &_left{
@@ -292,14 +336,11 @@ header{
 
 // Pricing
 .pricing{
-    display: flex;
-    flex-direction: column;
-    gap: $size-500 * 3;
+    @include flex-col($size-500 * 3);
     padding-inline: $size-400;
     margin-block: $size-900 * 1.5;
     &_top{
-        display: flex;
-        align-items: center;
+        @include flex-ac($size-700);
         flex-direction: column-reverse;
         &_image{
             width: 70%;
@@ -321,20 +362,15 @@ header{
         place-items: center;
         gap: $size-500;
         .plan{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: $size-400;
-            width: 90%;
+            @include flex-col-sb($size-400);
+            width: 80%;
             height: 80%;
             border: 1px solid $base-black;
             padding: $size-500 * 2 $size-600;
             word-break: break-all;
 
             &_details{
-                display: flex;
-                flex-direction: column;
-                gap: $size-500;
+                @include flex-col($size-500);
                 .price{
                     display: flex;
                     gap: $size-400;
@@ -351,9 +387,7 @@ header{
                 }
 
                 ul{
-                    display: flex;
-                    gap: $size-500;
-                    flex-direction: column;
+                    @include flex-col($size-500);
                     padding-left: $size-400;
                     li{
                         list-style: square;
@@ -383,6 +417,7 @@ header{
                 color: $base-white;
                 background: $base-black;
                 button{
+                    color: $base-black;
                     background: $base-white;
                     border: 2px solid $base-white;
                     &:hover{
@@ -428,6 +463,7 @@ header{
             grid-auto-flow: column;
             .plan{
                 height: 80%;
+                width: 90%;
                 padding: $size-500 * 2 $size-400;
             }
         }
@@ -436,9 +472,7 @@ header{
 
 // FAQs
 .faqs{
-    display: flex;
-    gap: $size-600;
-    flex-direction: column;
+    @include flex-col($size-600);
     padding-inline: $size-400;
     margin-block: $size-900 * 1.5;
     &_left{
@@ -461,10 +495,7 @@ header{
                 padding-block: $size-500;
                 border-bottom: 2px solid $base-black;
                 .header{
-                    display: flex;
-                    gap: $size-200;
-                    align-items: flex-start;
-                    justify-content: space-between;
+                    @include flex-as-sb($size-200);
                     span{
                         font-weight: $fw-ultrabold;
                     }
@@ -508,8 +539,7 @@ footer{
     color: $base-white;
     padding: $size-400 * 3 $size-200 0 $size-200;
     .first{
-        display: flex;
-        justify-content: space-between;
+        @include flex-ac-sb(0);
         &_image{
             width: 15%;
         }
@@ -523,8 +553,7 @@ footer{
 
     .second{
         ul{
-            display: flex;
-            justify-content: space-between;
+            @include flex-ac-sb(0);
             li{
                 border: 1px dashed $base-white;
             }
@@ -575,6 +604,10 @@ footer{
                 background: $base-white;
                 border: 0;
                 border-left: 2px solid $base-white;
+                &:is(:hover, :focus-within){
+                    background: $base-black;
+                    color: $base-white;
+                }
             }
         }
 
@@ -602,6 +635,11 @@ footer{
             grid-row: 2/3;
             ul{
                 gap: $size-300;
+                li{
+                    img{
+                        object-fit: cover;
+                    }
+                }
             }
         }
 
@@ -609,9 +647,7 @@ footer{
             grid-column: 7/9;
             grid-row: 1/3;
             ul{
-                display: flex;
-                flex-direction: column;
-                gap: $size-500;
+                @include flex-col($size-500);
                 text-align: right;
                 li{
                     margin-top: 0;
@@ -623,9 +659,7 @@ footer{
             grid-column: 9/11;
             grid-row: 1/3;
             ul{
-                display: flex;
-                flex-direction: column;
-                gap: $size-500;
+                @include flex-col($size-500);
                 text-align: right;
                 li{
                     margin-top: 0;
@@ -637,16 +671,13 @@ footer{
             grid-column: 1/4;
             grid-row: 3/4;
             .subscribe{
-                height: $size-700;
+                height: $size-600 * 1.7;
                 input{
-                    padding-inline: $size-400;
+                    padding-inline: $size-700;
                 }
                 button{
-                    padding-inline: $size-500 * 1.5;
-                    &:hover{
-                        background: $base-black;
-                        color: $base-white;
-                    }
+                    color: $base-black;
+                    padding-inline: $size-700;
                 }
             }
         }

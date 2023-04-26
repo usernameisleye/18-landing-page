@@ -2,8 +2,9 @@
 @font-face {
     font-family: Neue Machina;
     src: url("./fonts/neue-machina/NeueMachina-Light.otf") format("truetype"),
-         url("./fonts/neue-machina/NeueMachina-Regular.otf") format("truetype"),
-         url("./fonts/neue-machina/NeueMachina-Ultrabold.otf") format("truetype");
+        url("./fonts/neue-machina/NeueMachina-Regular.otf") format("truetype"),
+        url("./fonts/neue-machina/NeueMachina-Ultrabold.otf") format("truetype");
+    font-size: 300, 400, 700;
     font-style: normal;
 }
 

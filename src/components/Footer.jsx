@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     const [scrollY, setScrollY] = useState(0);
@@ -80,9 +81,9 @@ const Footer = () => {
         <footer>
             <div className="first">
                 <div className="first_image">
-                    <a href="/">
+                    <Link to="/">
                         <img src="./images/LogoWhite.png" alt="18 footer logo" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="first_mail">
@@ -95,9 +96,9 @@ const Footer = () => {
                 <ul role="list">
                     {socials.map(social => (
                         <li key={social.id}>
-                            <a href="/">
+                            <Link to="/">
                                 <img src={`./images/${social.src}.png`} alt={social.alt} />
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>

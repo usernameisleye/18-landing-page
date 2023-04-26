@@ -5,35 +5,10 @@
 // Resets
 @import "./reset";
 
-// Utility classes
-.visually-hidden:not(:focus):not(:active){
-    border: 0;
-    padding: 0;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    clip: rect(0, 0, 0, 0);
-}
-
-
 // Mixins
-@mixin header{
-    text-transform: uppercase;
-    font-weight: $fw-ultrabold;
-    padding: $size-200 $size-400;
-    border: 1px solid $base-black;
-    width: fit-content;
-}
+@import "./mixins";
 
-@mixin h2{
-    font-size: $fs-600;
-    font-weight: $fw-ultrabold;
-    margin-block: $size-400;
-}
-
+// PAGES
 // Home page
 @import "./pages/Home";
 
