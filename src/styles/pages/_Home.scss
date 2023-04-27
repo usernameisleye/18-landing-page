@@ -492,20 +492,28 @@ header{
 
         &_bottom{
             .faq{
-                padding-block: $size-500;
+                height: auto;
+                padding: $size-300 $size-400;
                 border-bottom: 2px solid $base-black;
                 .header{
+                    padding-top: $size-400;
+                    cursor: pointer;
                     @include flex-as-sb($size-200);
                     span{
                         font-weight: $fw-ultrabold;
                     }
-                    img{
-                        cursor: pointer;
-                    }
                 }
 
                 p{
+                    max-height: 0;
+                    overflow: hidden;
                     margin-top: $size-400;
+                    transition: all .5s cubic-bezier(0, 1, 0, 1);
+                }
+                .show{
+                    height: auto;
+                    max-height: 9999px;
+                    transition: all .5s cubic-bezier(1, 0, 1, 0);
                 }
             }
         }

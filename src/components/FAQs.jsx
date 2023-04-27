@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const FAQs = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(null);
 
     const faqs = [
         {
@@ -31,12 +31,12 @@ const FAQs = () => {
         }
     ];
 
-    const toggleFAQs = (id) => {
-        faqs.forEach(faq => {
-            if(id === faq.id){
-                setOpen(!open)
-            }
-        })
+    const toggleFAQs = (i) => {
+        if(open === i){
+            return setOpen(null);
+        }
+
+        setOpen(i);
     }
 
     return ( 
@@ -52,18 +52,18 @@ const FAQs = () => {
                 </div>
 
                 <div className="faqs_left_bottom">
-                    { faqs.map(faq => (
+                    { faqs.map((faq, i) => (
                         <article key={faq.id} className="faq">
-                            <div className="header">
+                            <div className="header" onClick={() => toggleFAQs(i)}>
                                 <span>{ faq.header }</span>
-                                { open ? 
-                                    <img src="./images/i_minus.png" alt="minus icon" onClick={() => toggleFAQs(faq.id)} />
+                                { open === i ? 
+                                    <img src="./images/i_minus.png" alt="minus icon" />
                                     :
-                                    <img src="./images/i_plus.png" alt="plus icon" onClick={() => toggleFAQs(faq.id)} />
+                                    <img src="./images/i_plus.png" alt="plus icon" />
                                 }
                             </div>
                             
-                            {open ? <p>{ faq.body }</p> : null}
+                            <p className={open === i ? "show" : ""}>{ faq.body }</p>
                         </article>
                     )) }
                 </div>
